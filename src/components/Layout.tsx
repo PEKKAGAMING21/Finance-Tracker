@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outlet, Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   LayoutDashboard, 
@@ -23,7 +23,7 @@ const navigation = [
   { name: 'Settings', href: '/settings', icon: Settings },
 ];
 
-export function Layout() {
+export function Layout({ children }: { children: React.ReactNode }) {
   const { user, signOut } = useAuth();
   const { isDark, toggleTheme } = useTheme();
   const location = useLocation();
@@ -116,7 +116,7 @@ export function Layout() {
       <div className="pl-64">
         <main className="py-8">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <Outlet />
+            {children}
           </div>
         </main>
       </div>
